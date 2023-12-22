@@ -20,10 +20,17 @@ declare interface Window {
     fs: {
       writeBinaryFile(path: string, data: Uint8Array): Promise<void>;
     };
-    notification:{
+    notification: {
       requestPermission(): Promise<Permission>;
       isPermissionGranted(): Promise<boolean>;
       sendNotification(options: string | Options): void;
+    };
+    globalShortcut: {
+      isRegistered(shortcut: string): Promise<boolean>;
+      register(
+        shortcut: string,
+        handler: (shortcut: string) => void,
+      ): Promise<void>;
     };
   };
 }
